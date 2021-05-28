@@ -93,9 +93,9 @@ def camera_pose_estimation(img1,img2,K):
 
     U, S, V = np.linalg.svd(E)
     W = np.array([0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]).reshape(3, 3)
-    if np.linalg.det(U):
+    if np.linalg.det(U)<0:
         U = -U
-    if np.linalg.det(V):
+    if np.linalg.det(V)<0:
         V = -V
     R1 = U.dot(W).dot(V)
     R2 = U.dot(W.T).dot(V)
